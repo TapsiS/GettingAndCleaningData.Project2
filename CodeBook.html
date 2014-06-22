@@ -144,59 +144,74 @@ hr {
 <body>
 <h1>Title : Getting and Cleaning Data-Codebook</h1>
 
-<h2>The variables used is run_analysis.R script are as below -</h2>
+<h1>Reading the data</h1>
 
-<h3><em>Conversion Variables</em></h3>
-
-<p>as.c=as.character
-as.n=as.numeric</p>
-
-<h3><em>Reading Test data files Variables</em></h3>
+<h2>Test data variables:</h2>
 
 <p>test_subject = Variable of class dataframe having subject identifier values for test data<br/>
 test_set     = Variable of class dataframe having test set values<br/>
 test_label   = Variable of class dataframe having Activity Labels for test data  </p>
 
-<h3><em>Reading Training data files Variables</em></h3>
+<h2>Training data variables:</h2>
 
-<p>train_subject =  Variable of class dataframe having subject identifier values for training data<br/>
+<p>train_subject =  Variable of class dataframe having subject identifier values 
+                    for training data<br/>
 train_set     =  Variable of class dataframe having subject identifier values<br/>
 train_label   =  Variable of class dataframe having subject identifier values  </p>
 
-<h3><em>Merging test data files Variable</em></h3>
+<h1>Merging the data</h1>
+
+<h3>Merging test data Variable</h3>
 
 <p>test.data     =  Variable of class dataframe having merged test data  </p>
 
-<h3><em>Merging training data files Variable</em></h3>
+<h3>Merging training data Variable</h3>
 
 <p>train.data    = Variable of class dataframe having merged training data  </p>
 
-<h3><em>Merge train and test data file Variable</em></h3>
+<h3>Merge train and test data file Variable</h3>
 
 <p>combined.data = Variable of class dataframe having merged test and trainng data  </p>
 
-<h3><em>561 feature vector Variable</em></h3>
+<h1>Using descriptive activity names</h1>
+
+<h3>561 feature vector Variable</h3>
 
 <p>features      = Dataframe with features from features.txt<br/>
 features.vector= Character Vector with names of all features  </p>
 
-<h3><em>Columns with mean and std Variables</em></h3>
+<h3>Columns with mean and std Variables</h3>
 
 <p>cols          = Integer vector with columnn indices with mean/std observations<br/>
 combined.data1 = Data frame with appropriate column names(from cols)<br/>
 combined.data2 = Data frame with merged data with appropriate column names  </p>
 
-<h3><em>Retreiving activity names</em></h3>
+<h3>Retreiving activity names</h3>
 
 <p>activity       = Data frame with activity names<br/>
 activity.vec   = Character Variable with activity names and index<br/>
 combined.data2$Activity.Labels = Data frame with merged data(combined.data2) with activity indices replaced by names     </p>
 
-<h3><em>Tidy Data set Variables</em></h3>
+<h1>Create a tidy data</h1>
 
 <p>split.data1    = List Variable with data split by Subjects<br/>
 out = code performing groupwise calculation for average features for each subject and activity<br/>
 tidy.data = Tidy Data set</p>
+
+<h2>Data Set</h2>
+
+<h1>The dataset includes the following files:</h1>
+
+<ul>
+<li><p>&#39;README.txt&#39;</p></li>
+<li><p>&#39;features_info.txt&#39;: Shows information about the variables used on the feature vector.</p></li>
+<li><p>&#39;features.txt&#39;: List of all features.</p></li>
+<li><p>&#39;activity_labels.txt&#39;: Links the class labels with their activity name.</p></li>
+<li><p>&#39;train/X_train.txt&#39;: Training set.</p></li>
+<li><p>&#39;train/y_train.txt&#39;: Training labels.</p></li>
+<li><p>&#39;test/X_test.txt&#39;: Test set.</p></li>
+<li><p>&#39;test/y_test.txt&#39;: Test labels.</p></li>
+</ul>
 
 </body>
 

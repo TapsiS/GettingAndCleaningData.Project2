@@ -1,20 +1,20 @@
 as.c=as.character
 as.n=as.numeric
-setwd("~/Documents/Courses/JHU_Data Science/3_Cleaning data/project/UCI HAR Dataset")
+#setwd("~/Documents/Courses/JHU_Data Science/3_Cleaning data/project/UCI HAR Dataset")
 #------------read all test files
-test_subject = read.table("test/subject_test.txt", sep="\t",col.names="Subject Indentifier")
+test_subject = read.table("data\test/subject_test.txt", sep="\t",col.names="Subject Indentifier")
 #View(test_subject)
-test_set = read.table("test/X_test.txt")
+test_set = read.table("data/test/X_test.txt")
 #View(test_set)
-test_label = read.table("test/y_test.txt", sep="\t",col.names="Activity Labels")
+test_label = read.table("data/test/y_test.txt", sep="\t",col.names="Activity Labels")
 #View(test_label)
 
 #------------read all training files
-train_subject = read.table("train/subject_train.txt",col.names="Subject Indentifier")
+train_subject = read.table("data/train/subject_train.txt",col.names="Subject Indentifier")
 #View(train_subject)
-train_set = read.table("train/X_train.txt")
+train_set = read.table("data/train/X_train.txt")
 #View(train_set)
-train_label = read.table("train/y_train.txt", sep="\t",col.names="Activity Labels")
+train_label = read.table("data/train/y_train.txt", sep="\t",col.names="Activity Labels")
 #View(train_label)
 
 #------------merge test data files
@@ -27,7 +27,7 @@ train.data <-cbind(train_subject,train_label,train_set)
 combined.data <-rbind(test.data,train.data)
 
 #------------retreiving 561 feature vector
-features <- read.table(file="features.txt")
+features <- read.table(file="data/features.txt")
 features.vector <- as.vector(features[,2])
 
 #-----------assign column names to 561 features in combined data file
@@ -39,7 +39,7 @@ combined.data1 <- combined.data[,cols]
 combined.data2 <- cbind(combined.data[,1:2],combined.data1[,])
 
 #-----------retreiving activity names
-activity <- read.table(file="activity_labels.txt")
+activity <- read.table(file="data/activity_labels.txt")
 activity.vec <- as.c(activity[,2]);names(activity.vec)=1:6
 combined.data2$Activity.Labels = activity.vec[combined.data2$Activity.Labels]
 
@@ -58,5 +58,10 @@ out <- lapply(1:30, function(i){
 })
 
 tidy.data <- do.call(rbind, out)
-View(tody_data)
-    
+View(tidy.data)
+
+#------export to text file
+write.table(x=tidy.data,file="output/tidydata.txt",sep="\t")
+
+#------reading tidy data 
+View (read.table(file="output/tidydata.txt",sep="\t",header=TRUE,check.names=FALSE)    )
