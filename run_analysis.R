@@ -1,8 +1,9 @@
 as.c=as.character
 as.n=as.numeric
-#setwd("~/Documents/Courses/JHU_Data Science/3_Cleaning data/project/UCI HAR Dataset")
+#setwd("~/Documents/Courses/JHU_Data Science/3_Cleaning data/project/GettingAndCleaningData.Project2/")
 #------------read all test files
-test_subject = read.table("data\test/subject_test.txt", sep="\t",col.names="Subject Indentifier")
+cat(as.c(Sys.time()), "BGN Reading data\n")
+test_subject = read.table("data/test/subject_test.txt", sep="\t",col.names="Subject Indentifier")
 #View(test_subject)
 test_set = read.table("data/test/X_test.txt")
 #View(test_set)
@@ -18,6 +19,7 @@ train_label = read.table("data/train/y_train.txt", sep="\t",col.names="Activity 
 #View(train_label)
 
 #------------merge test data files
+cat(as.c(Sys.time()), "BGN Merging test and training data\n")
 test.data <-cbind(test_subject,test_label,test_set)
 
 #------------merge train data file
@@ -27,6 +29,7 @@ train.data <-cbind(train_subject,train_label,train_set)
 combined.data <-rbind(test.data,train.data)
 
 #------------retreiving 561 feature vector
+cat(as.c(Sys.time()), "Subsetting to selected columns, mean and std\n")
 features <- read.table(file="data/features.txt")
 features.vector <- as.vector(features[,2])
 
@@ -44,6 +47,7 @@ activity.vec <- as.c(activity[,2]);names(activity.vec)=1:6
 combined.data2$Activity.Labels = activity.vec[combined.data2$Activity.Labels]
 
 #----------group data as per subject and activity and find mean
+cat(as.c(Sys.time()), "Splitting, summarizing and creating tidy data\n")
 split.data1 <- split(combined.data2,combined.data2$Subject.Indentifier)
 
 
@@ -58,7 +62,7 @@ out <- lapply(1:30, function(i){
 })
 
 tidy.data <- do.call(rbind, out)
-View(tidy.data)
+#View(tidy.data)
 
 #------export to text file
 write.table(x=tidy.data,file="output/tidydata.txt",sep="\t")
